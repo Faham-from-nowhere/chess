@@ -832,8 +832,7 @@
                     possibleMoves = []; // Clear possible moves
                     // Only switch turn if the game is not over
                     // The handleMoveExecution already calls isGameOver and switches turn if needed.
-                    // This redundant check is not needed here and can cause double turn switch attempts.
-                    // Removed: if (!isGameOver()) { switchTurn(); }
+                  
                 } else {
                     // Invalid move, or clicked on own piece again
                     if (piece && getPieceColor(piece) === turn) {
@@ -1081,9 +1080,7 @@
             }
         }
 
-        // --- Piece Movement Logic (Comprehensive) ---
-        // Moved all helper functions here to ensure they are defined before usage.
-
+        
         // Helper function to find the king's position
         function findKing(color, currentBoard = board) {
             const kingPiece = (color === 'white') ? 'K' : 'k';
@@ -1536,8 +1533,7 @@
             // King and Bishop vs King and Bishop on same color squares (simplified check)
             if (whitePieces.length === 2 && getPieceType(whitePieces[0]) === 'k' && getPieceType(whitePieces[1]) === 'b' &&
                 blackPieces.length === 2 && getPieceType(blackPieces[0]) === 'k' && getPieceType(blackPieces[1]) === 'b') {
-                // This is a simplified check. A full check would require knowing the square color of the bishops.
-                // For now, we'll assume it's a draw if only K+B vs K+B remains.
+                
                 return true;
             }
 
@@ -1545,9 +1541,8 @@
         }
 
 
-        // IMPORTANT: Replace this with the actual URL of your deployed backend server.
-        // If running locally, it will be 'http://127.0.0.1:5000'
-        const AI_SERVER_URL = 'http://127.0.0.1:5000/api/get_ai_move';
+       
+        const AI_SERVER_URL = 'https://chess-9xw7.onrender.com';
 
         async function makeAIMove(aiColor, difficulty) {
             updateMessage("AI is thinking (connecting to server)...");
@@ -1929,7 +1924,7 @@
         }
 
 
-        // --- Theming ---
+        
         boardThemeSelect.addEventListener('change', (event) => {
             const theme = event.target.value;
             setBoardTheme(theme);
