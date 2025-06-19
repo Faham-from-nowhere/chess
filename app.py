@@ -1,7 +1,15 @@
 # Import necessary libraries
-import chess # Still useful for board representation and move parsing
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS # Make sure to import CORS
+
+app = Flask(__name__)
+# Enable CORS for your specific frontend origin
+CORS(app, resources={r"/api/*": {"origins": "https://faham-from-nowhere.github.io"}})
+# Or, for development/testing,  can allow all origins (less secure for production):
+# CORS(app)
+
+# ... rest of your Flask app code and routes ...
+import chess # Still useful for board representation and move parsing
 import math
 import random
 import time
